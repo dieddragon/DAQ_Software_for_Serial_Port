@@ -1,0 +1,23 @@
+C:\Users\dieddragon\Box Sync\KBO Internal (kozutemi@andrew.cmu.edu)\Roller Setup\Daq Software\C#\Roller Setup Daq Software\Roller Setup Daq Software\bin\Debug\Roller Setup Daq Software.exe.config
+C:\Users\dieddragon\Box Sync\KBO Internal (kozutemi@andrew.cmu.edu)\Roller Setup\Daq Software\C#\Roller Setup Daq Software\Roller Setup Daq Software\bin\Debug\Roller Setup Daq Software.exe
+C:\Users\dieddragon\Box Sync\KBO Internal (kozutemi@andrew.cmu.edu)\Roller Setup\Daq Software\C#\Roller Setup Daq Software\Roller Setup Daq Software\bin\Debug\Roller Setup Daq Software.pdb
+C:\Users\dieddragon\Box Sync\KBO Internal (kozutemi@andrew.cmu.edu)\Roller Setup\Daq Software\C#\Roller Setup Daq Software\Roller Setup Daq Software\obj\Debug\Roller_Setup_Daq_Software.Properties.Resources.resources
+C:\Users\dieddragon\Box Sync\KBO Internal (kozutemi@andrew.cmu.edu)\Roller Setup\Daq Software\C#\Roller Setup Daq Software\Roller Setup Daq Software\obj\Debug\Roller Setup Daq Software.csproj.GenerateResource.Cache
+C:\Users\dieddragon\Box Sync\KBO Internal (kozutemi@andrew.cmu.edu)\Roller Setup\Daq Software\C#\Roller Setup Daq Software\Roller Setup Daq Software\obj\Debug\Roller Setup Daq Software.exe
+C:\Users\dieddragon\Box Sync\KBO Internal (kozutemi@andrew.cmu.edu)\Roller Setup\Daq Software\C#\Roller Setup Daq Software\Roller Setup Daq Software\obj\Debug\Roller Setup Daq Software.pdb
+C:\Users\dieddragon\Box Sync\KBO Internal (kozutemi@andrew.cmu.edu)\Roller Setup\Daq Software\C#\Roller Setup Daq Software\Roller Setup Daq Software\bin\Debug\ZedGraph.dll
+C:\Users\dieddragon\Box Sync\KBO Internal (kozutemi@andrew.cmu.edu)\Roller Setup\Daq Software\C#\Roller Setup Daq Software\Roller Setup Daq Software\obj\Debug\Roller_Setup_Daq_Software.MainWin.resources
+C:\Users\dieddragon\Box Sync\KBO Internal (kozutemi@andrew.cmu.edu)\Roller Setup\Daq Software\C#\Roller Setup Daq Software\Roller Setup Daq Software\obj\Debug\Roller Setup Daq Software.csprojResolveAssemblyReference.cache
+C:\Users\dieddragon\Box Sync\KBO Internal (kozutemi@andrew.cmu.edu)\Software\Test Software\C#\Roller Setup Daq Software\Roller Setup Daq Software\bin\Debug\Roller Setup Daq Software.exe.config
+C:\Users\dieddragon\Box Sync\KBO Internal (kozutemi@andrew.cmu.edu)\Software\Test Software\C#\Roller Setup Daq Software\Roller Setup Daq Software\obj\Debug\Roller Setup Daq Software.exe
+C:\Users\dieddragon\Box Sync\KBO Internal (kozutemi@andrew.cmu.edu)\Software\Test Software\C#\Roller Setup Daq Software\Roller Setup Daq Software\obj\Debug\Roller Setup Daq Software.pdb
+C:\Users\dieddragon\Box Sync\KBO Internal (kozutemi@andrew.cmu.edu)\Software\Test Software\C#\Roller Setup Daq Software\Roller Setup Daq Software\bin\Debug\Roller Setup Daq Software.exe
+C:\Users\dieddragon\Box Sync\KBO Internal (kozutemi@andrew.cmu.edu)\Software\Test Software\C#\Roller Setup Daq Software\Roller Setup Daq Software\bin\Debug\Roller Setup Daq Software.pdb
+C:\Users\dieddragon\Box Sync\KBO Internal (kozutemi@andrew.cmu.edu)\Software\Test Software\C#\Roller Setup Daq Software\Roller Setup Daq Software\bin\Debug\ZedGraph.dll
+C:\Users\dieddragon\Box Sync\KBO Internal (kozutemi@andrew.cmu.edu)\Software\Test Software\C#\Roller Setup Daq Software\Roller Setup Daq Software\obj\Debug\Roller_Setup_Daq_Software.MainWin.resources
+C:\Users\dieddragon\Box Sync\KBO Internal (kozutemi@andrew.cmu.edu)\Software\Test Software\C#\Roller Setup Daq Software\Roller Setup Daq Software\obj\Debug\Roller_Setup_Daq_Software.Properties.Resources.resources
+C:\Users\dieddragon\Box Sync\KBO Internal (kozutemi@andrew.cmu.edu)\Software\Test Software\C#\Roller Setup Daq Software\Roller Setup Daq Software\obj\Debug\Roller Setup Daq Software.csproj.GenerateResource.Cache
+C:\Users\dieddragon\Box Sync\KBO Internal (kozutemi@andrew.cmu.edu)\Software\Test Software\C#\Roller Setup Daq Software\Roller Setup Daq Software\obj\Debug\Roller Setup Daq Software.csprojResolveAssemblyReference.cache
+C:\Users\dieddragon\Box Sync\KBO Internal (kozutemi@andrew.cmu.edu)\Software\Serial DAQ Software\C#\Roller Setup Daq Software\Roller Setup Daq Software\bin\Debug\Roller Setup Daq Software.exe.config
+C:\Users\dieddragon\Box Sync\KBO Internal (kozutemi@andrew.cmu.edu)\Software\Serial DAQ Software\C#\Roller Setup Daq Software\Roller Setup Daq Software\obj\Debug\Roller Setup Daq Software.exe
+C:\Users\dieddragon\Box Sync\KBO Internal (kozutemi@andrew.cmu.edu)\Software\Serial DAQ Software\C#\Roller Setup Daq Software\Roller Setup Daq Software\obj\Debug\Roller Setup Daq Software.pdb

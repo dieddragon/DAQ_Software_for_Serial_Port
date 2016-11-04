@@ -1,0 +1,13 @@
+C:\Users\dieddragon\Box Sync\KBO Internal (kozutemi@andrew.cmu.edu)\Software\Serial DAQ Software\C#\Roller Setup Daq Software\Roller Setup Daq Software\bin\Debug\ZedGraph.dll
+C:\Users\dieddragon\Box Sync\KBO Internal (kozutemi@andrew.cmu.edu)\Software\Serial DAQ Software\C#\Roller Setup Daq Software\Roller Setup Daq Software\obj\Debug\Serial DAQ Software.csprojResolveAssemblyReference.cache
+C:\Users\dieddragon\Box Sync\KBO Internal (kozutemi@andrew.cmu.edu)\Software\Serial DAQ Software\C#\Roller Setup Daq Software\Roller Setup Daq Software\obj\Debug\Serial DAQ Software.csproj.GenerateResource.Cache
+C:\Users\dieddragon\Box Sync\KBO Internal (kozutemi@andrew.cmu.edu)\Software\Serial DAQ Software\C#\Roller Setup Daq Software\Roller Setup Daq Software\bin\Debug\Serial DAQ Software.exe.config
+C:\Users\dieddragon\Box Sync\KBO Internal (kozutemi@andrew.cmu.edu)\Software\Serial DAQ Software\C#\Roller Setup Daq Software\Roller Setup Daq Software\bin\Debug\Serial DAQ Software.exe
+C:\Users\dieddragon\Box Sync\KBO Internal (kozutemi@andrew.cmu.edu)\Software\Serial DAQ Software\C#\Roller Setup Daq Software\Roller Setup Daq Software\bin\Debug\Serial DAQ Software.pdb
+C:\Users\dieddragon\Box Sync\KBO Internal (kozutemi@andrew.cmu.edu)\Software\Serial DAQ Software\C#\Roller Setup Daq Software\Roller Setup Daq Software\obj\Debug\Serial_DAQ_Software.Properties.Resources.resources
+C:\Users\dieddragon\Box Sync\KBO Internal (kozutemi@andrew.cmu.edu)\Software\Serial DAQ Software\C#\Roller Setup Daq Software\Roller Setup Daq Software\obj\Debug\Serial DAQ Software.exe
+C:\Users\dieddragon\Box Sync\KBO Internal (kozutemi@andrew.cmu.edu)\Software\Serial DAQ Software\C#\Roller Setup Daq Software\Roller Setup Daq Software\obj\Debug\Serial DAQ Software.pdb
+C:\Users\dieddragon\Box Sync\KBO Internal (kozutemi@andrew.cmu.edu)\Software\Serial DAQ Software\C#\Roller Setup Daq Software\Roller Setup Daq Software\obj\Debug\Serial_DAQ_Software.MainWin.resources
+C:\Users\dieddragon\Box Sync\KBO Internal (kozutemi@andrew.cmu.edu)\Software\Serial DAQ Software\C#\Serial DAQ Software\Serial DAQ Software\bin\Debug\Serial DAQ Software.exe.config
+C:\Users\dieddragon\Box Sync\KBO Internal (kozutemi@andrew.cmu.edu)\Software\Serial DAQ Software\C#\Serial DAQ Software\Serial DAQ Software\obj\Debug\Serial DAQ Software.exe
+C:\Users\dieddragon\Box Sync\KBO Internal (kozutemi@andrew.cmu.edu)\Software\Serial DAQ Software\C#\Serial DAQ Software\Serial DAQ Software\obj\Debug\Serial DAQ Software.pdb
