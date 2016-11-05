@@ -7,6 +7,9 @@ namespace Serial_DAQ_Software
 {
     public partial class MainWin : Form
     {
+        int timeUpdateMS = 100;
+        System.DateTime timeUpdateLast = System.DateTime.Now;
+
         PointPairList[] data;
         //PointPairList rawDataLC = new PointPairList();
 
@@ -144,8 +147,14 @@ namespace Serial_DAQ_Software
                             else
                                 timeDataOffsetMS += tempDataTS;
 
-                            RefreshGraph();
-
+                            System.DateTime timeNow = System.DateTime.Now;
+                            System.TimeSpan timeDiff = timeNow.Subtract(timeUpdateLast);
+                            
+                            if (timeDiff.Milliseconds >= timeUpdateMS)
+                            {
+                                RefreshGraph();
+                                timeUpdateLast = System.DateTime.Now;
+                            }
                         }
                         
                     }
