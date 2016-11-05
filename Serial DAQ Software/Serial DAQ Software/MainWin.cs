@@ -7,20 +7,24 @@ namespace Serial_DAQ_Software
 {
     public partial class MainWin : Form
     {
-        PointPairList dataLC = new PointPairList();
-        PointPairList rawDataLC = new PointPairList();
+        PointPairList[] data;
+        //PointPairList rawDataLC = new PointPairList();
 
         //array to store serial port names connected to the computer
         string[] namePorts = new string[] { };
 
-        int nDataLC = 0;
+        int nData = 0;
         double timeDataOffsetMS = 0;
+        int numData = 0;
 
-        int lengthData = 4;
+        int lengthData = 0;
+        int iTS = 0;
+
+        bool isJustStarted = true;
 
         //zed graph stuff
-        GraphPane paneLC;
-        LineItem curveLC;
+        GraphPane pane;
+        LineItem[] curve;
 
         static readonly object locker = new object();
 
@@ -28,14 +32,13 @@ namespace Serial_DAQ_Software
         private delegate void InvalidatePlot();
         private delegate void RefGraph();
 
+        System.Random rnd = new System.Random();
+
         public MainWin()
         {
             InitializeComponent();
 
-            InitializeGraph();
-
             namePorts = System.IO.Ports.SerialPort.GetPortNames();
-
             SetPortNames();
         }
 
@@ -84,21 +87,38 @@ namespace Serial_DAQ_Software
             {
                 if (btnStart.Text == "Stop")
                 {
-                    double tempDataLC;
-                    double tempDataTS;
+                    double[] tempDataLC = new double[numData];
+                    double tempDataTS = 0;
 
-                    nDataLC++;
+                    nData++;
+
                     string rawData = serialPortLC.ReadLine();
-                    string[] tempData = rawData.Split(',');
+                    string[] tempMessage = rawData.Split(',');
 
-                    if (tempData.Length == lengthData)
+                    if (iTS == 0)
+                        tempDataTS = nData;
+
+                    if (tempMessage.Length == lengthData)
                     {
+                        int counter = 0;
+                        for (int i = 0; i < lengthData; i++)
+                        {
+                            if (i == (iTS - 1))
+                            {
+                                    double.TryParse(tempMessage[i], out tempDataTS);
+                            }
+                            else
+                            {
+                                double.TryParse(tempMessage[i], out tempDataLC[counter]);
+                                counter++;
+                            }
+                        }
 
-                        double.TryParse(tempData[0], out tempDataLC);
-                        double.TryParse(tempData[3], out tempDataTS);
+                        //double.TryParse(tempData[0], out tempDataLC);
+                       // double.TryParse(tempData[3], out tempDataTS);
 
                         // If this is the first set of data read, then set the time offset
-                        if (nDataLC == 1)
+                        if (nData == 1)
                         {
                             // change
                             timeDataOffsetMS = 0;
@@ -111,10 +131,19 @@ namespace Serial_DAQ_Software
                         // axes since the data have changed
                         lock (locker)
                         {
+                            for (int i = 0; i < numData; i++)
+                            {
+                                data[i].Add(timeDataOffsetMS, tempDataLC[i]);
+                                curve[i].AddPoint(timeDataOffsetMS, tempDataLC[i]);
+                            }
+                                
 
-                            dataLC.Add(timeDataOffsetMS, tempDataLC);
-                            curveLC.AddPoint(timeDataOffsetMS, tempDataLC);
-                            timeDataOffsetMS += (tempDataTS / 1000.0);
+                            //curveLC.AddPoint(timeDataOffsetMS, tempDataLC);
+                            if (iTS != 0)
+                                timeDataOffsetMS += (tempDataTS / 1000.0);
+                            else
+                                timeDataOffsetMS += tempDataTS;
+
                             RefreshGraph();
 
                         }
@@ -142,7 +171,7 @@ namespace Serial_DAQ_Software
                 this.BeginInvoke(actDisc);
             }
                 
-            nDataLC = 0;
+            nData = 0;
             
             try
             {
@@ -151,8 +180,12 @@ namespace Serial_DAQ_Software
                 //serialPortLC.DiscardInBuffer();
                 lock (locker)
                 {
-                    dataLC.Clear();
-                    curveLC.Clear();
+                    for (int i = 0; i<numData; i++)
+                    {
+                        data[i].Clear();
+                        curve[i].Clear();
+                    }
+
                     timeDataOffsetMS = 0;
                 }
                     
@@ -174,25 +207,33 @@ namespace Serial_DAQ_Software
 
         #region Funs
 
-        private void InitializeGraph()
+        private void InitializeGraph(int numData)
         {
             // Initialize the graph
-            paneLC = zedGraphControlLC.GraphPane;
+            pane = zedGraphControl.GraphPane;
 
             // Set the Titles
-            paneLC.Title = "Load vs Time";
-            paneLC.XAxis.Title = "Time (ms)";
-            paneLC.YAxis.Title = "Load (digits)";
+            pane.Title = "Data";
+            pane.XAxis.Title = (iTS == 0) ? "N" : "Time (ms)";
+            pane.YAxis.Title = "Value";
 
-            // Generate a red curve with diamond symbols
-            curveLC = paneLC.AddCurve("Load Cell", dataLC, System.Drawing.Color.Red, SymbolType.Diamond);
-            curveLC.Line.IsVisible = false;
+            // Generate curves with random colors
+            //int numData = (iTS == 0) ? lengthData : lengthData - 1;
+            curve = new LineItem[numData];
+            for (int i = 0; i < numData; i++)
+            {
+                curve[i] = pane.AddCurve("Data: " + (i + 1).ToString(), data[i], System.Drawing.Color.FromArgb(rnd.Next(50, 255), rnd.Next(50, 255), rnd.Next(50, 255)), SymbolType.Diamond);
+                curve[i].Line.IsVisible = true;
+            }
+               
+           // curveLC = paneLC.AddCurve("Load Cell", dataLC, System.Drawing.Color.Red, SymbolType.Diamond);
+           // curveLC.Line.IsVisible = false;
         }
 
         private void RefreshGraph()
         {
-                zedGraphControlLC.Invalidate();
-                zedGraphControlLC.AxisChange();                
+                zedGraphControl.Invalidate();
+                zedGraphControl.AxisChange();                
         }
 
         private void SetPortNames()
@@ -209,16 +250,31 @@ namespace Serial_DAQ_Software
         {
             if (btnStart.Text == "Start" && btnConnectSP.Text == "Stop")
             {
-                System.Action actDisc = () => serialPortLC.DiscardInBuffer();
-                System.Action actStop = () => btnStart.Text = "Stop";
-                this.BeginInvoke(actDisc);
-                this.BeginInvoke(actStop);
+                if (int.TryParse(tbNoData.Text, out lengthData) && int.TryParse(tbIndTS.Text, out iTS) && lengthData > 0)
+                {
+                    numData = (iTS == 0) ? lengthData : lengthData - 1;
+                    if (numData > 0)
+                    {
+                        if (isJustStarted)
+                        {
+                            data = new PointPairList[numData];
+                            for (int i = 0; i < numData; i++)
+                                data[i] = new PointPairList();
+                            InitializeGraph(numData);
+                            isJustStarted = false;
+                        }
 
+                        System.Action actDisc = () => serialPortLC.DiscardInBuffer();
+                        this.BeginInvoke(actDisc);
+                        System.Action actStop = () => btnStart.Text = "Stop";
+                        this.BeginInvoke(actStop);
+                    }
+                }
             }
             else
             {
-                System.Action actStart = () => btnStart.Text = "Start";
-                this.BeginInvoke(actStart);
+                    System.Action actStart = () => btnStart.Text = "Start";
+                    this.BeginInvoke(actStart);
             }
         }
 
@@ -226,30 +282,30 @@ namespace Serial_DAQ_Software
 
         private void btnWritetoFile_Click(object sender, System.EventArgs e)
         {
-            try
-            {
+         //   try
+         //   {
                 //////////////////////////////// CHANGE!
-                PointPairList tempData = (PointPairList)dataLC.Clone();
+         //       PointPairList tempData = (PointPairList)dataLC.Clone();
 
-                List<string> tempDataString = new List<string>();
+         //       List<string> tempDataString = new List<string>();
 
-                string nameFile = System.DateTime.Now.Day.ToString() + "_" + System.DateTime.Now.Hour.ToString() + "_" + System.DateTime.Now.Minute.ToString() + "_" + System.DateTime.Now.Second.ToString() + ".txt";
+         //       string nameFile = System.DateTime.Now.Day.ToString() + "_" + System.DateTime.Now.Hour.ToString() + "_" + System.DateTime.Now.Minute.ToString() + "_" + System.DateTime.Now.Second.ToString() + ".txt";
 
                 // Write to the file
-                using (System.IO.StreamWriter file =
-                new System.IO.StreamWriter(nameFile))
-                {
-                    file.WriteLine("Time (ms) , Load (gr)");
-                    file.WriteLine(tbComment.Text.ToString());
-                    foreach (PointPair pp in tempData)
-                        file.WriteLine(pp.X.ToString() + "," + pp.Y.ToString());
+         //       using (System.IO.StreamWriter file =
+         //       new System.IO.StreamWriter(nameFile))
+         //       {
+         //           file.WriteLine("Time (ms) , Load (gr)");
+         //           file.WriteLine(tbComment.Text.ToString());
+         //           foreach (PointPair pp in tempData)
+         //               file.WriteLine(pp.X.ToString() + "," + pp.Y.ToString());
 
-                }
-            }
-            catch (System.Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
+         //       }
+         //   }
+         //   catch (System.Exception ex)
+         //   {
+         //       MessageBox.Show(ex.Message);
+         //   }
         }
     }
 

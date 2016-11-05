@@ -30,7 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             this.serialPortLC = new System.IO.Ports.SerialPort(this.components);
-            this.zedGraphControlLC = new ZedGraph.ZedGraphControl();
+            this.zedGraphControl = new ZedGraph.ZedGraphControl();
             this.cbCOM = new System.Windows.Forms.ComboBox();
             this.btnConnectSP = new System.Windows.Forms.Button();
             this.btnStart = new System.Windows.Forms.Button();
@@ -42,8 +42,14 @@
             this.btnWritetoFile = new System.Windows.Forms.Button();
             this.tbComment = new System.Windows.Forms.TextBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.tbNoData = new System.Windows.Forms.TextBox();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.tbIndTS = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.gbSerialPort.SuspendLayout();
             this.gbDaqLC.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // serialPortLC
@@ -52,14 +58,14 @@
             this.serialPortLC.DtrEnable = true;
             this.serialPortLC.DataReceived += new System.IO.Ports.SerialDataReceivedEventHandler(this.serialPortLC_DataReceived);
             // 
-            // zedGraphControlLC
+            // zedGraphControl
             // 
-            this.zedGraphControlLC.IsShowPointValues = false;
-            this.zedGraphControlLC.Location = new System.Drawing.Point(0, 0);
-            this.zedGraphControlLC.Name = "zedGraphControlLC";
-            this.zedGraphControlLC.PointValueFormat = "G";
-            this.zedGraphControlLC.Size = new System.Drawing.Size(640, 480);
-            this.zedGraphControlLC.TabIndex = 0;
+            this.zedGraphControl.IsShowPointValues = false;
+            this.zedGraphControl.Location = new System.Drawing.Point(0, 0);
+            this.zedGraphControl.Name = "zedGraphControl";
+            this.zedGraphControl.PointValueFormat = "G";
+            this.zedGraphControl.Size = new System.Drawing.Size(640, 480);
+            this.zedGraphControl.TabIndex = 0;
             // 
             // cbCOM
             // 
@@ -173,20 +179,70 @@
             this.tbComment.TabIndex = 15;
             this.tbComment.Text = "Comment";
             // 
+            // tbNoData
+            // 
+            this.tbNoData.Location = new System.Drawing.Point(6, 41);
+            this.tbNoData.Name = "tbNoData";
+            this.tbNoData.Size = new System.Drawing.Size(35, 20);
+            this.tbNoData.TabIndex = 16;
+            this.tbNoData.Text = "4";
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.label2);
+            this.groupBox1.Controls.Add(this.tbIndTS);
+            this.groupBox1.Controls.Add(this.label1);
+            this.groupBox1.Controls.Add(this.tbNoData);
+            this.groupBox1.Location = new System.Drawing.Point(646, 257);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(133, 150);
+            this.groupBox1.TabIndex = 17;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Data";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(6, 69);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(108, 52);
+            this.label2.TabIndex = 19;
+            this.label2.Text = "Index of Time Stamp \r\nin Data\r\n(0 for no Time Stamp)\r\n\r\n";
+            // 
+            // tbIndTS
+            // 
+            this.tbIndTS.Location = new System.Drawing.Point(6, 124);
+            this.tbIndTS.Name = "tbIndTS";
+            this.tbIndTS.Size = new System.Drawing.Size(35, 20);
+            this.tbIndTS.TabIndex = 18;
+            this.tbIndTS.Text = "4";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(6, 25);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(116, 13);
+            this.label1.TabIndex = 17;
+            this.label1.Text = "No of Data in Message";
+            // 
             // MainWin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(784, 561);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.tbComment);
             this.Controls.Add(this.btnWritetoFile);
             this.Controls.Add(this.gbDaqLC);
             this.Controls.Add(this.gbSerialPort);
-            this.Controls.Add(this.zedGraphControlLC);
+            this.Controls.Add(this.zedGraphControl);
             this.Name = "MainWin";
-            this.Text = "Roller Setup Control Panel";
+            this.Text = "DAQ From Serial Port";
             this.gbSerialPort.ResumeLayout(false);
             this.gbDaqLC.ResumeLayout(false);
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -195,7 +251,7 @@
         #endregion
 
         private System.IO.Ports.SerialPort serialPortLC;
-        private ZedGraph.ZedGraphControl zedGraphControlLC;
+        private ZedGraph.ZedGraphControl zedGraphControl;
         private System.Windows.Forms.ComboBox cbCOM;
         private System.Windows.Forms.Button btnConnectSP;
         private System.Windows.Forms.Button btnStart;
@@ -207,6 +263,11 @@
         private System.Windows.Forms.Button btnWritetoFile;
         private System.Windows.Forms.TextBox tbComment;
         private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.TextBox tbNoData;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox tbIndTS;
+        private System.Windows.Forms.Label label1;
     }
 }
 
